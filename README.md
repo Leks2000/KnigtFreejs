@@ -5,9 +5,11 @@
 - **Goal**: интерактивная Three.js-страница с процедурным low-poly персонажем по предоставленным референсам рыцаря/латника.
 - **Main Features**:
   - Procedural 3D character assembled from Three.js primitives.
-  - Weathered plate armor, closed visor helmet, pauldrons, greaves and gloves.
-  - Ragged cloth tabard/cape, leather belts, pouches and satchel.
-  - Long matchlock / arquebus-style firearm with wooden stock and metal barrel.
+  - Roblox R15 block proportions with clean visible connections between torso, limbs, shoulders, neck and gear.
+  - Weathered plate armor, upgraded closed sallet visor helmet, pauldrons, greaves and gloves.
+  - Procedural canvas textures: scratched metal, dirty fabric, green under-cloth, leather, wood grain and mud stains.
+  - Ragged cloth tabard/cape, chainmail skirt patches, leather belts, pouches and satchel.
+  - Long matchlock / arquebus-style firearm with wooden stock, metal barrel and bayonet tip.
   - Orbit camera, zoom/pan, auto-rotation, explode view, pose switch and lighting toggle.
   - Reference image panel using the user-provided Genspark file URLs.
 
@@ -44,3 +46,9 @@
 - **Status**: local sandbox development ready.
 - **Tech Stack**: Hono + TypeScript + Three.js CDN + CSS.
 - **Last Updated**: 2026-06-16
+
+## 2026-06-16 Reference Upgrade
+- Reworked the helmet into a proper closed sallet with angular beaked visor, thin eye slit, nasal ridge, rivets and breathing holes.
+- Added stronger Roblox-style block connections: shoulder sockets, leather gaskets, belts, trims and articulated gorget rings.
+- Added more reference-matching detail: layered shoulder lames, raised breastplate, chainmail rings, torn cloth strips, mud, scratches, pouches, ammo box and weapon details.
+- Updated the reference panel to use the provided image URLs: `dGAXima5` and `m8RrKN7p`.
