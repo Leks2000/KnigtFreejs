@@ -151,7 +151,9 @@ function createMaterials() {
     darkLeather: new THREE.MeshStandardMaterial({ color: 0x2d231d, roughness: 0.94, metalness: 0.02, map: leatherTexture }),
     wood: new THREE.MeshStandardMaterial({ color: 0x654631, roughness: 0.82, metalness: 0, map: woodTexture }),
     brass: new THREE.MeshStandardMaterial({ color: 0xb6884a, roughness: 0.5, metalness: 0.52 }),
-    black: new THREE.MeshStandardMaterial({ color: 0x080807, roughness: 0.82, metalness: 0.1 })
+    black: new THREE.MeshStandardMaterial({ color: 0x080807, roughness: 0.82, metalness: 0.1 }),
+    skinTone: new THREE.MeshStandardMaterial({ color: 0x987860, roughness: 0.96, metalness: 0.01 }),
+    shirtBlack: new THREE.MeshStandardMaterial({ color: 0x141414, roughness: 0.88, metalness: 0.04 })
   }
 }
 
@@ -269,21 +271,31 @@ export function createRobloxR15Knight() {
   const root = new THREE.Group()
   root.name = 'Roblox Dark Fantasy Mercenary Commander'
   root.position.y = -1.52
-  root.userData.robloxRig = 'R15-inspired blocky hero rig with oversized helmet, broad shoulders and readable equipment'
+  root.userData.robloxRig = 'Strict Roblox R15 block silhouette: rectangular limbs, flat box torso, cylindrical head with armor layered on top'
+
+  const robloxBase = new THREE.Group()
+  robloxBase.name = 'roblox base body silhouette'
+  addMesh(robloxBase, box(1.26, 1.18, 0.52), materials.shirtBlack, [0, 2.78, 0], [0, 0, 0], [1, 1, 1], 'roblox base torso block')
+  addMesh(robloxBase, box(0.42, 1.26, 0.42), materials.skinTone, [-0.97, 2.72, 0], [0, 0, 0], [1, 1, 1], 'roblox base left arm block')
+  addMesh(robloxBase, box(0.42, 1.26, 0.42), materials.skinTone, [0.97, 2.72, 0], [0, 0, 0], [1, 1, 1], 'roblox base right arm block')
+  addMesh(robloxBase, box(0.44, 1.45, 0.44), materials.shirtBlack, [-0.38, 1.38, 0], [0, 0, 0], [1, 1, 1], 'roblox base left leg block')
+  addMesh(robloxBase, box(0.44, 1.45, 0.44), materials.shirtBlack, [0.38, 1.38, 0], [0, 0, 0], [1, 1, 1], 'roblox base right leg block')
+  root.add(robloxBase)
 
   const torso = new THREE.Group()
   torso.name = 'roblox-r15 torso armor'
   torso.position.set(0, 2.74, 0)
-  addMesh(torso, box(1.18, 1.22, 0.58), materials.steel, [0, 0.03, 0], [0, 0, 0], [1, 1, 1], 'r15 square upper torso cuirass')
-  addMesh(torso, box(0.84, 0.72, 0.5), materials.steel, [0, -0.67, 0], [0.03, 0, 0], [1, 1, 1], 'r15 narrow waist fauld plate')
-  addMesh(torso, box(0.76, 0.9, 0.035), materials.steelLight, [0, 0.08, 0.315], [0, 0, 0], [1, 1, 1], 'raised breastplate panel')
-  addPlateTrim(torso, materials, 1.12, 1.14, 0.335, 0.04, 'cuirass bright trim')
-  addMesh(torso, cylinder(0.57, 0.62, 0.085, 20), materials.edge, [0, 0.71, 0], [Math.PI / 2, 0, 0], [1, 0.72, 1], 'wide gorget rim')
-  addMesh(torso, box(1.32, 0.17, 0.61), materials.leather, [0, -0.46, 0.025], [0, 0, 0], [1, 1, 1], 'thick connected waist belt')
-  addMesh(torso, box(1.34, 0.055, 0.64), materials.brass, [0, -0.36, 0.04], [0, 0, 0], [1, 1, 1], 'belt brass top trim')
-  addArmorScuffs(torso, materials, rng, 18)
-  addMudStains(torso, materials, rng, 7, 0.86, -0.72, 0.33)
-  addRivetGrid(torso, materials, [-0.46, -0.32, 0.32, 0.46], [0.48, 0.22, -0.08], 0.35)
+  addMesh(torso, box(1.3, 1.2, 0.56), materials.darkSteel, [0, 0.02, 0], [0, 0, 0], [1, 1, 1], 'strict r15 flat torso armor shell')
+  addMesh(torso, box(1.2, 0.95, 0.08), materials.steelLight, [0, 0.14, 0.31], [0, 0, 0], [1, 1, 1], 'flat chest plate overlay')
+  addMesh(torso, box(1.06, 0.2, 0.12), materials.black, [0, 0.58, 0.25], [0, 0, 0], [1, 1, 1], 'aggressive chest shadow visor strip')
+  addMesh(torso, box(1.06, 0.34, 0.5), materials.steel, [0, -0.62, 0], [0, 0, 0], [1, 1, 1], 'block waist armor segment')
+  addPlateTrim(torso, materials, 1.24, 1.12, 0.345, 0.05, 'cuirass bright trim')
+  addMesh(torso, cylinder(0.6, 0.62, 0.09, 20), materials.edge, [0, 0.69, 0], [Math.PI / 2, 0, 0], [1, 0.62, 1], 'wide gorget rim')
+  addMesh(torso, box(1.36, 0.18, 0.62), materials.leather, [0, -0.42, 0.025], [0, 0, 0], [1, 1, 1], 'thick connected waist belt')
+  addMesh(torso, box(1.36, 0.06, 0.65), materials.brass, [0, -0.32, 0.04], [0, 0, 0], [1, 1, 1], 'belt brass top trim')
+  addArmorScuffs(torso, materials, rng, 16)
+  addMudStains(torso, materials, rng, 8, 0.9, -0.7, 0.33)
+  addRivetGrid(torso, materials, [-0.49, -0.34, 0.34, 0.49], [0.45, 0.2, -0.04], 0.35)
   registerLayer(layers, torso, [0, 0.26, 0.18])
   root.add(torso)
 
@@ -309,45 +321,46 @@ export function createRobloxR15Knight() {
 
   const helmet = new THREE.Group()
   helmet.name = 'closed sallet helmet'
-  helmet.position.set(0, 4.1, 0)
-  addMesh(helmet, sphere(0.5, 0.52, 0.42, 18, 10), materials.steel, [0, 0.13, 0], [0.02, 0, 0], [1, 1, 1], 'rounded sallet helmet bowl')
-  addMesh(helmet, sphere(0.28, 0.13, 0.34, 14, 7), materials.steel, [0, 0.02, -0.34], [-0.18, 0, 0], [1, 1, 1], 'rear sallet tail')
-  addMesh(helmet, sphere(0.22, 0.2, 0.22, 12, 7), materials.edge, [0, 0.59, -0.01], [0.08, 0, 0], [1, 1, 1], 'helmet top crest knob')
-  addMesh(helmet, box(0.76, 0.26, 0.18), materials.darkSteel, [0, 0.0, 0.35], [-0.22, 0, 0], [1, 1, 1], 'closed angular visor plate')
-  addMesh(helmet, box(0.58, 0.16, 0.32), materials.darkSteel, [0, -0.08, 0.51], [-0.42, 0, 0], [1, 1, 1], 'projecting pointed breather snout')
-  addMesh(helmet, box(0.72, 0.035, 0.025), materials.black, [0, 0.06, 0.475], [-0.18, 0, 0], [1, 1, 1], 'thin black visor slit')
-  addMesh(helmet, box(0.06, 0.24, 0.035), materials.edge, [0, 0.03, 0.49], [-0.18, 0, 0], [1, 1, 1], 'visor center nasal ridge')
-  const holes = [-0.23, -0.14, -0.05, 0.05, 0.14, 0.23]
+  helmet.position.set(0, 4.02, 0)
+  addMesh(helmet, cylinder(0.31, 0.33, 0.74, 20), materials.shadowSteel, [0, 0.1, 0], [0, 0, 0], [1, 1, 1], 'roblox cylindrical head armor shell')
+  addMesh(helmet, box(0.74, 0.06, 0.74), materials.black, [0, 0.43, 0], [0, 0, 0], [1, 1, 1], 'dark brim hat plate')
+  addMesh(helmet, cylinder(0.22, 0.24, 0.16, 16), materials.black, [0, 0.52, 0], [0, 0, 0], [1, 1, 1], 'hat crown')
+  addMesh(helmet, box(0.68, 0.24, 0.16), materials.darkSteel, [0, 0.04, 0.3], [-0.18, 0, 0], [1, 1, 1], 'closed angular visor plate')
+  addMesh(helmet, box(0.58, 0.15, 0.28), materials.darkSteel, [0, -0.08, 0.46], [-0.38, 0, 0], [1, 1, 1], 'projecting pointed breather snout')
+  addMesh(helmet, box(0.62, 0.03, 0.025), materials.black, [0, 0.08, 0.43], [-0.18, 0, 0], [1, 1, 1], 'thin black visor slit')
+  addMesh(helmet, box(0.06, 0.24, 0.035), materials.edge, [0, 0.02, 0.44], [-0.18, 0, 0], [1, 1, 1], 'visor center nasal ridge')
+  const holes = [-0.21, -0.12, -0.04, 0.04, 0.12, 0.21]
   holes.forEach((x, index) => {
-    addMesh(helmet, cylinder(0.015, 0.015, 0.034, 8), materials.black, [x, -0.105 - (index % 2) * 0.045, 0.55], [Math.PI / 2, 0, 0], [1, 1, 1], 'visor breathing hole')
+    addMesh(helmet, cylinder(0.014, 0.014, 0.03, 8), materials.black, [x, -0.1 - (index % 2) * 0.04, 0.5], [Math.PI / 2, 0, 0], [1, 1, 1], 'visor breathing hole')
   })
-  addRivetLine(helmet, materials, -0.22, 0.28, 0.39, 6, 0.088, 0.012)
-  addArmorScuffs(helmet, materials, rng, 8, [0, 0.16, 0.38])
-  helmet.scale.setScalar(1.16)
+  addRivetLine(helmet, materials, -0.2, 0.25, 0.36, 6, 0.08, 0.012)
+  addArmorScuffs(helmet, materials, rng, 7, [0, 0.14, 0.35])
+  helmet.scale.setScalar(1.12)
   registerLayer(layers, helmet, [0, 0.92, 0.2])
   root.add(helmet)
 
   function makePauldron(name, side) {
     const pauldron = new THREE.Group()
     pauldron.name = name
-    addMesh(pauldron, sphere(0.46, 0.28, 0.38, 16, 8), materials.steel, [0, 0, 0], [0.02, 0, 0], [1, 1, 1], 'large rounded shoulder main plate')
-    addMesh(pauldron, sphere(0.41, 0.13, 0.35, 16, 6), materials.steelLight, [0.02 * side, -0.16, 0.02], [0.03, 0, 0], [1, 1, 1], 'lower lame shoulder plate')
-    addMesh(pauldron, sphere(0.36, 0.11, 0.29, 16, 6), materials.darkSteel, [0.04 * side, -0.3, 0.02], [0.03, 0, 0], [1, 1, 1], 'second lower lame plate')
-    addMesh(pauldron, cylinder(0.32, 0.35, 0.04, 16), materials.edge, [0, -0.16, 0.015], [Math.PI / 2, 0, 0], [1, 0.76, 1], 'bright pauldron rim')
+    addMesh(pauldron, box(0.56, 0.24, 0.46), materials.steel, [0, 0, 0], [0.02, 0, 0.16 * side], [1, 1, 1], 'sharp block pauldron main plate')
+    addMesh(pauldron, box(0.48, 0.16, 0.4), materials.steelLight, [0.02 * side, -0.17, 0.02], [0.03, 0, 0.14 * side], [1, 1, 1], 'lower angular shoulder lame')
+    addMesh(pauldron, box(0.43, 0.13, 0.34), materials.darkSteel, [0.04 * side, -0.3, 0.02], [0.04, 0, 0.12 * side], [1, 1, 1], 'second lower angular lame')
+    addMesh(pauldron, box(0.42, 0.045, 0.37), materials.edge, [0, -0.16, 0.17], [0, 0, 0], [1, 1, 1], 'bright pauldron edge seam')
     addMesh(pauldron, box(0.2, 0.08, 0.24), materials.darkLeather, [0.1 * side, -0.28, -0.02], [0, 0, 0.3 * side], [1, 1, 1], 'visible shoulder strap pad')
-    addRivetLine(pauldron, materials, -0.13, -0.04, 0.24, 4, 0.085)
-    addArmorScuffs(pauldron, materials, rng, 5, [0, -0.02, 0.24])
+    addMesh(pauldron, box(0.12, 0.1, 0.28), materials.edge, [0.28 * side, -0.04, 0.08], [0, 0, 0.52 * side], [1, 1, 1], 'aggressive shoulder horn')
+    addRivetLine(pauldron, materials, -0.13, -0.03, 0.24, 4, 0.085)
+    addArmorScuffs(pauldron, materials, rng, 5, [0, -0.02, 0.22])
     return pauldron
   }
 
   const shoulderL = makePauldron('left worn pauldron', -1)
-  shoulderL.position.set(-0.84, 3.24, 0.02)
-  shoulderL.rotation.set(0.05, 0.07, -0.28)
+  shoulderL.position.set(-0.92, 3.24, 0.02)
+  shoulderL.rotation.set(0.02, 0.03, -0.1)
   registerLayer(layers, shoulderL, [-0.75, 0.32, 0.18])
 
   const shoulderR = makePauldron('right worn pauldron', 1)
-  shoulderR.position.set(0.84, 3.24, 0.02)
-  shoulderR.rotation.set(0.05, -0.07, 0.28)
+  shoulderR.position.set(0.92, 3.24, 0.02)
+  shoulderR.rotation.set(0.02, -0.03, 0.1)
   registerLayer(layers, shoulderR, [0.75, 0.32, 0.18])
 
   root.add(shoulderL, shoulderR)
@@ -357,13 +370,13 @@ export function createRobloxR15Knight() {
     arm.name = name
 
     addJointSocket(arm, materials, [0.02 * side, 0.58, 0], side, `${name} shoulder connector`)
-    addMesh(arm, box(0.39, 0.58, 0.34), materials.darkSteel, [0, 0.24, 0], [0.04, 0, 0.06 * side], [1, 1, 1], `${name} blocky upper arm mail`) 
-    addMesh(arm, box(0.41, 0.19, 0.38), materials.steelLight, [0.01 * side, -0.05, 0.02], [0.04, 0, 0.02 * side], [1, 1, 1], `${name} elbow couter cap`)
-    addMesh(arm, box(0.34, 0.5, 0.29), materials.steel, [0.01 * side, -0.29, 0], [0.03, 0, -0.05 * side], [1, 1, 1], `${name} forearm upper vambrace`)
-    addMesh(arm, box(0.33, 0.44, 0.27), materials.steel, [0.01 * side, -0.72, 0], [0.03, 0, 0.04 * side], [1, 1, 1], `${name} lower vambrace`)
-    addMesh(arm, box(0.34, 0.23, 0.25), materials.leather, [0.02 * side, -1.04, 0.03], [0.1, 0, -0.1 * side], [1, 1, 1], `${name} square glove`) 
-    addMesh(arm, box(0.13, 0.7, 0.085), materials.darkLeather, [0.13 * side, -0.18, 0.2], [0.04, 0, 0], [1, 1, 1], `${name} connected vambrace strap`)
-    addMesh(arm, box(0.34, 0.045, 0.31), materials.edge, [0, -0.52, 0.17], [0, 0, 0], [1, 1, 1], `${name} bright arm plate seam`)
+    addMesh(arm, box(0.42, 0.62, 0.42), materials.darkSteel, [0, 0.24, 0], [0, 0, 0], [1, 1, 1], `${name} roblox upper arm block armor`)
+    addMesh(arm, box(0.44, 0.2, 0.44), materials.steelLight, [0, -0.08, 0], [0, 0, 0], [1, 1, 1], `${name} square elbow couter cap`)
+    addMesh(arm, box(0.4, 0.54, 0.4), materials.steel, [0, -0.36, 0], [0, 0, 0], [1, 1, 1], `${name} block forearm vambrace`)
+    addMesh(arm, box(0.39, 0.46, 0.39), materials.steel, [0, -0.82, 0], [0, 0, 0], [1, 1, 1], `${name} lower box vambrace`)
+    addMesh(arm, box(0.4, 0.24, 0.33), materials.darkLeather, [0, -1.1, 0.02], [0, 0, 0], [1, 1, 1], `${name} square glove`)
+    addMesh(arm, box(0.13, 0.7, 0.09), materials.darkLeather, [0.14 * side, -0.2, 0.21], [0, 0, 0], [1, 1, 1], `${name} connected vambrace strap`)
+    addMesh(arm, box(0.38, 0.05, 0.35), materials.edge, [0, -0.56, 0.19], [0, 0, 0], [1, 1, 1], `${name} bright arm plate seam`)
     addRivetLine(arm, materials, -0.1, 0.02, 0.17, 4, 0.067)
     addArmorScuffs(arm, materials, rng, 6, [0, -0.3, 0.18])
     registerLayer(layers, arm, [side * 0.9, 0.18, 0.18])
@@ -371,25 +384,25 @@ export function createRobloxR15Knight() {
   }
 
   const armL = makeArm('left armored arm', -1)
-  armL.position.set(-0.95, 2.72, 0.03)
-  armL.rotation.set(0.07, -0.04, -0.15)
+  armL.position.set(-0.98, 2.74, 0.02)
+  armL.rotation.set(0.02, 0, -0.03)
 
   const armR = makeArm('right armored arm', 1)
-  armR.position.set(0.95, 2.78, 0.03)
-  armR.rotation.set(0.27, 0.02, 0.3)
+  armR.position.set(0.98, 2.74, 0.02)
+  armR.rotation.set(0.1, 0.01, 0.08)
 
   root.add(armL, armR)
 
   function makeLeg(name, side = 1) {
     const leg = new THREE.Group()
     leg.name = name
-    addMesh(leg, box(0.42, 0.72, 0.36), materials.olive, [0, 0.29, 0], [0.01, 0, 0.02 * side], [1, 1, 1], `${name} square green thigh cloth`)
-    addMesh(leg, box(0.42, 0.17, 0.38), materials.steelLight, [0, -0.12, 0.04], [0.02, 0, 0], [1, 1, 1], `${name} blocky knee cap`)
-    addMesh(leg, box(0.39, 0.5, 0.31), materials.steel, [0, -0.36, 0.03], [0.02, 0, 0], [1, 1, 1], `${name} upper greave`)
-    addMesh(leg, box(0.35, 0.56, 0.29), materials.steel, [0.01 * side, -0.78, 0], [0.03, 0, -0.02 * side], [1, 1, 1], `${name} lower shin armor`)
-    addMesh(leg, box(0.45, 0.18, 0.84), materials.steel, [0.02 * side, -1.16, 0.18], [0.06, 0, 0], [1, 1, 1], `${name} broad sabaton boot`)
-    addMesh(leg, box(0.11, 0.67, 0.08), materials.darkLeather, [0.14 * side, -0.55, 0.18], [0.02, 0, 0], [1, 1, 1], `${name} greave side strap`)
-    addMesh(leg, box(0.36, 0.045, 0.31), materials.edge, [0, -0.58, 0.17], [0, 0, 0], [1, 1, 1], `${name} bright shin seam`)
+    addMesh(leg, box(0.44, 0.74, 0.44), materials.olive, [0, 0.3, 0], [0, 0, 0], [1, 1, 1], `${name} roblox thigh block cloth`)
+    addMesh(leg, box(0.45, 0.18, 0.44), materials.steelLight, [0, -0.12, 0.02], [0, 0, 0], [1, 1, 1], `${name} square knee cap`)
+    addMesh(leg, box(0.42, 0.54, 0.4), materials.steel, [0, -0.38, 0.01], [0, 0, 0], [1, 1, 1], `${name} upper greave`)
+    addMesh(leg, box(0.4, 0.6, 0.39), materials.steel, [0, -0.84, 0], [0, 0, 0], [1, 1, 1], `${name} lower shin armor`)
+    addMesh(leg, box(0.47, 0.2, 0.66), materials.steel, [0, -1.2, 0.1], [0, 0, 0], [1, 1, 1], `${name} block sabaton boot`)
+    addMesh(leg, box(0.11, 0.68, 0.09), materials.darkLeather, [0.15 * side, -0.56, 0.2], [0, 0, 0], [1, 1, 1], `${name} greave side strap`)
+    addMesh(leg, box(0.38, 0.05, 0.34), materials.edge, [0, -0.6, 0.18], [0, 0, 0], [1, 1, 1], `${name} bright shin seam`)
     addRivetLine(leg, materials, -0.1, -0.26, 0.2, 4, 0.067)
     addMudStains(leg, materials, rng, 9, 0.36, -0.94, 0.2)
     registerLayer(layers, leg, [side * 0.45, -0.2, 0.14])
@@ -397,12 +410,12 @@ export function createRobloxR15Knight() {
   }
 
   const legL = makeLeg('left plated leg', -1)
-  legL.position.set(-0.37, 1.4, 0)
-  legL.rotation.set(0.03, 0, -0.04)
+  legL.position.set(-0.38, 1.4, 0)
+  legL.rotation.set(0.01, 0, -0.01)
 
   const legR = makeLeg('right plated leg', 1)
-  legR.position.set(0.37, 1.4, 0)
-  legR.rotation.set(0.03, 0, 0.04)
+  legR.position.set(0.38, 1.4, 0)
+  legR.rotation.set(0.01, 0, 0.01)
 
   root.add(legL, legR)
 
@@ -460,7 +473,7 @@ export function createRobloxR15Knight() {
 
   root.userData.layers = layers
   root.userData.materials = materials
-  root.userData.referenceStyle = 'battle-worn dark fantasy mercenary commander, chunky Roblox forms, satchel, utility pouch, hanging dagger and front spear'
+  root.userData.referenceStyle = 'strict Roblox block avatar silhouette with Deepwoken-like grim armor overlays, sharp pauldrons, bandit belts, satchel and aggressive dark presentation'
 
   return { root, layers, materials }
 }
