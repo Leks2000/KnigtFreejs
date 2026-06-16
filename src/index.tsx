@@ -76,8 +76,8 @@ app.get('/', (c) => {
         <section id="reference-panel" aria-label="Provided visual references">
           <h2>Референсы</h2>
           <div class="reference-grid">
-            <img src="https://www.genspark.ai/api/files/s/46PC7oET" alt="Mercenary commander armor turnaround reference" />
-            <img src="https://www.genspark.ai/api/files/s/46PC7oET" alt="Mercenary commander silhouette reference" />
+            <img src="https://www.genspark.ai/api/files/s/I9nVlO2N" alt="Knight armor turnaround reference" />
+            <img src="https://www.genspark.ai/api/files/s/vbSO0NCf" alt="Roblox blocky silhouette reference" />
           </div>
         </section>
 
