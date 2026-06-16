@@ -55,6 +55,7 @@ app.get('/', (c) => {
           <button id="toggle-explode" type="button">Разобрать слои</button>
           <button id="toggle-pose" type="button">Смена позы</button>
           <button id="toggle-light" type="button">Драматичный свет</button>
+          <button id="download-glb" type="button">Скачать GLB (Roblox R15)</button>
         </nav>
 
         <section id="stats-panel" aria-label="Character details">
@@ -75,8 +76,8 @@ app.get('/', (c) => {
         <section id="reference-panel" aria-label="Provided visual references">
           <h2>Референсы</h2>
           <div class="reference-grid">
-            <img src="https://www.genspark.ai/api/files/s/YW9aJnSI" alt="Knight bust reference with long gun" />
-            <img src="https://www.genspark.ai/api/files/s/0tbnEuIb" alt="Full body knight turnaround reference" />
+            <img src="https://www.genspark.ai/api/files/s/NvZ4Vklt" alt="Knight bust reference with long gun" />
+            <img src="https://www.genspark.ai/api/files/s/znazdvd6" alt="Full body knight turnaround reference" />
           </div>
         </section>
 
