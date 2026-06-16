@@ -4,15 +4,16 @@ const app = new Hono()
 
 app.get('/api/character-spec', (c) => {
   return c.json({
-    name: 'Ragged Arquebus Knight',
-    style: 'low-poly medieval fantasy character inspired by the provided armor references',
+    name: 'Roblox R15 Ragged Arquebus Knight — reference upgrade',
+    style: 'Roblox blocky R15 proportions with weathered low-poly medieval armor, cloth and leather detail from the provided references',
     parts: [
-      'closed sallet helmet with perforated visor',
-      'weathered plate cuirass and pauldrons',
-      'ragged cloth tabard and back cape',
-      'leather satchel and belt pouches',
-      'long matchlock / arquebus-style firearm',
-      'layered greaves, vambraces, gloves and boots'
+      'proper closed sallet helmet with beaked visor, slit, nasal ridge and breathing holes',
+      'weathered plate cuirass with raised breastplate, trims, scuffs, mud and rivets',
+      'connected pauldrons, shoulder sockets, arm joints and visible leather gaskets',
+      'ragged cloth tabard, torn cape and chainmail skirt patches',
+      'leather satchel, belt pouches, straps, buckles and ammunition box',
+      'long matchlock / arquebus-style firearm with wooden texture, muzzle, lock and bayonet',
+      'layered greaves, vambraces, gloves and broad sabaton boots'
     ],
     controls: ['drag to orbit', 'wheel to zoom', 'buttons for pose, explode view and lighting']
   })
@@ -45,8 +46,8 @@ app.get('/', (c) => {
           <p class="eyebrow">Three.js procedural model</p>
           <h1>Рваный латник с аркебузой</h1>
           <p class="summary">
-            Броу, сделал интерактивного персонажа из примитивов Three.js: шлем с забралом,
-            латный корпус, потрёпанная ткань, сумки, ремни и длинное оружие в духе референсов.
+            Броу, апнул модель под Roblox R15 и референс: нормальный закрытый шлем-саллет,
+            аккуратные соединения блоков, латные слои, рваная ткань, сумки, ремни, грязь, царапины и длинное оружие.
           </p>
         </header>
 
@@ -65,7 +66,7 @@ app.get('/', (c) => {
           </article>
           <article class="stat-card">
             <strong>Low-poly</strong>
-            <span>rough fantasy style</span>
+            <span>Roblox R15 knight</span>
           </article>
           <article class="stat-card">
             <strong>Orbit</strong>
@@ -76,8 +77,8 @@ app.get('/', (c) => {
         <section id="reference-panel" aria-label="Provided visual references">
           <h2>Референсы</h2>
           <div class="reference-grid">
-            <img src="https://www.genspark.ai/api/files/s/NvZ4Vklt" alt="Knight bust reference with long gun" />
-            <img src="https://www.genspark.ai/api/files/s/znazdvd6" alt="Full body knight turnaround reference" />
+            <img src="https://www.genspark.ai/api/files/s/dGAXima5" alt="Base Roblox block character reference" />
+            <img src="https://www.genspark.ai/api/files/s/m8RrKN7p" alt="Full body ragged knight turnaround reference" />
           </div>
         </section>
 
