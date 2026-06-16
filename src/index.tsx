@@ -4,16 +4,15 @@ const app = new Hono()
 
 app.get('/api/character-spec', (c) => {
   return c.json({
-    name: 'Roblox R15 Ragged Arquebus Knight — reference upgrade',
-    style: 'Roblox blocky R15 proportions with weathered low-poly medieval armor, cloth and leather detail from the provided references',
+    name: 'Roblox Dark Fantasy Mercenary Commander',
+    style: 'Stylized Roblox-compatible low-poly commander with chunky armor forms, readable silhouette and game-ready third-person proportions',
     parts: [
-      'proper closed sallet helmet with beaked visor, slit, nasal ridge and breathing holes',
-      'weathered plate cuirass with raised breastplate, trims, scuffs, mud and rivets',
-      'connected pauldrons, shoulder sockets, arm joints and visible leather gaskets',
-      'ragged cloth tabard, torn cape and chainmail skirt patches',
-      'leather satchel, belt pouches, straps, buckles and ammunition box',
-      'long matchlock / arquebus-style firearm with wooden texture, muzzle, lock and bayonet',
-      'layered greaves, vambraces, gloves and broad sabaton boots'
+      'oversized worn sallet/kettle hybrid helmet with slit visor and crest knob',
+      'broad rounded pauldrons, narrow-waist torso, blocky forearms and boots',
+      'cloth surcoat over partial chest plate with asymmetrical cross-body strap',
+      'one large satchel, one utility pouch, hanging dagger and practical belt gear',
+      'front-carried long polearm spear with chunky low-poly silhouette',
+      'weathered steel, dirty cloth and dark leather material breakup'
     ],
     controls: ['drag to orbit', 'wheel to zoom', 'buttons for pose, explode view and lighting']
   })
@@ -25,8 +24,8 @@ app.get('/', (c) => {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Three.js Ragged Knight Character</title>
-    <meta name="description" content="Procedural Three.js medieval knight character based on provided references" />
+    <title>Three.js Mercenary Commander Character</title>
+    <meta name="description" content="Procedural Three.js Roblox-style dark fantasy mercenary commander character" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='50' font-size='48'%3E%E2%9A%94%EF%B8%8F%3C/text%3E%3C/svg%3E" />
     <link rel="preconnect" href="https://unpkg.com" />
     <link rel="stylesheet" href="/static/style.css" />
@@ -44,10 +43,10 @@ app.get('/', (c) => {
       <aside id="control-panel" aria-label="Character controls and reference">
         <header id="app-header">
           <p class="eyebrow">Three.js procedural model</p>
-          <h1>Рваный латник с аркебузой</h1>
+          <h1>Mercenary Commander (Roblox)</h1>
           <p class="summary">
-            Броу, апнул модель под Roblox R15 и референс: нормальный закрытый шлем-саллет,
-            аккуратные соединения блоков, латные слои, рваная ткань, сумки, ремни, грязь, царапины и длинное оружие.
+            Новый оригинальный dark-fantasy на Roblox-пропорциях: oversized шлем, широкие паулдроны,
+            узкая талия, рваный суркоат, крупная сумка, утилитарный подсумок, кинжал и фронтальный spear/polearm.
           </p>
         </header>
 
@@ -61,12 +60,12 @@ app.get('/', (c) => {
 
         <section id="stats-panel" aria-label="Character details">
           <article class="stat-card">
-            <strong>100%</strong>
-            <span>Procedural geometry</span>
+            <strong>2k-4k</strong>
+            <span>Triangle budget target</span>
           </article>
           <article class="stat-card">
             <strong>Low-poly</strong>
-            <span>Roblox R15 knight</span>
+            <span>Roblox commander</span>
           </article>
           <article class="stat-card">
             <strong>Orbit</strong>
@@ -77,8 +76,8 @@ app.get('/', (c) => {
         <section id="reference-panel" aria-label="Provided visual references">
           <h2>Референсы</h2>
           <div class="reference-grid">
-            <img src="https://www.genspark.ai/api/files/s/dGAXima5" alt="Base Roblox block character reference" />
-            <img src="https://www.genspark.ai/api/files/s/m8RrKN7p" alt="Full body ragged knight turnaround reference" />
+            <img src="https://www.genspark.ai/api/files/s/46PC7oET" alt="Mercenary commander armor turnaround reference" />
+            <img src="https://www.genspark.ai/api/files/s/46PC7oET" alt="Mercenary commander silhouette reference" />
           </div>
         </section>
 

@@ -267,15 +267,15 @@ export function createRobloxR15Knight() {
   const layers = []
 
   const root = new THREE.Group()
-  root.name = 'Roblox R15 Ragged Reference Knight - upgraded'
+  root.name = 'Roblox Dark Fantasy Mercenary Commander'
   root.position.y = -1.52
-  root.userData.robloxRig = 'R15 blocky proportions with separate connected armor layers'
+  root.userData.robloxRig = 'R15-inspired blocky hero rig with oversized helmet, broad shoulders and readable equipment'
 
   const torso = new THREE.Group()
   torso.name = 'roblox-r15 torso armor'
   torso.position.set(0, 2.74, 0)
   addMesh(torso, box(1.18, 1.22, 0.58), materials.steel, [0, 0.03, 0], [0, 0, 0], [1, 1, 1], 'r15 square upper torso cuirass')
-  addMesh(torso, box(1.08, 0.72, 0.51), materials.steel, [0, -0.67, 0], [0.03, 0, 0], [1, 1, 1], 'r15 lower torso fauld plate')
+  addMesh(torso, box(0.84, 0.72, 0.5), materials.steel, [0, -0.67, 0], [0.03, 0, 0], [1, 1, 1], 'r15 narrow waist fauld plate')
   addMesh(torso, box(0.76, 0.9, 0.035), materials.steelLight, [0, 0.08, 0.315], [0, 0, 0], [1, 1, 1], 'raised breastplate panel')
   addPlateTrim(torso, materials, 1.12, 1.14, 0.335, 0.04, 'cuirass bright trim')
   addMesh(torso, cylinder(0.57, 0.62, 0.085, 20), materials.edge, [0, 0.71, 0], [Math.PI / 2, 0, 0], [1, 0.72, 1], 'wide gorget rim')
@@ -288,7 +288,7 @@ export function createRobloxR15Knight() {
   root.add(torso)
 
   const chestStrap = new THREE.Group()
-  chestStrap.name = 'diagonal leather straps and chest links'
+  chestStrap.name = 'cross-body commander strap harness'
   chestStrap.position.set(0, 2.85, 0.36)
   addMesh(chestStrap, box(0.15, 1.7, 0.08), materials.leather, [0.2, -0.02, 0], [0, 0, -0.78], [1, 1, 1], 'front diagonal leather strap')
   addMesh(chestStrap, box(0.12, 1.42, 0.08), materials.darkLeather, [-0.18, -0.02, -0.02], [0, 0, 0.76], [1, 1, 1], 'counter leather strap')
@@ -323,15 +323,16 @@ export function createRobloxR15Knight() {
   })
   addRivetLine(helmet, materials, -0.22, 0.28, 0.39, 6, 0.088, 0.012)
   addArmorScuffs(helmet, materials, rng, 8, [0, 0.16, 0.38])
+  helmet.scale.setScalar(1.16)
   registerLayer(layers, helmet, [0, 0.92, 0.2])
   root.add(helmet)
 
   function makePauldron(name, side) {
     const pauldron = new THREE.Group()
     pauldron.name = name
-    addMesh(pauldron, sphere(0.38, 0.25, 0.32, 16, 8), materials.steel, [0, 0, 0], [0.02, 0, 0], [1, 1, 1], 'large rounded shoulder main plate')
-    addMesh(pauldron, sphere(0.34, 0.12, 0.29, 16, 6), materials.steelLight, [0.02 * side, -0.14, 0.02], [0.03, 0, 0], [1, 1, 1], 'lower lame shoulder plate')
-    addMesh(pauldron, sphere(0.31, 0.1, 0.25, 16, 6), materials.darkSteel, [0.04 * side, -0.26, 0.02], [0.03, 0, 0], [1, 1, 1], 'second lower lame plate')
+    addMesh(pauldron, sphere(0.46, 0.28, 0.38, 16, 8), materials.steel, [0, 0, 0], [0.02, 0, 0], [1, 1, 1], 'large rounded shoulder main plate')
+    addMesh(pauldron, sphere(0.41, 0.13, 0.35, 16, 6), materials.steelLight, [0.02 * side, -0.16, 0.02], [0.03, 0, 0], [1, 1, 1], 'lower lame shoulder plate')
+    addMesh(pauldron, sphere(0.36, 0.11, 0.29, 16, 6), materials.darkSteel, [0.04 * side, -0.3, 0.02], [0.03, 0, 0], [1, 1, 1], 'second lower lame plate')
     addMesh(pauldron, cylinder(0.32, 0.35, 0.04, 16), materials.edge, [0, -0.16, 0.015], [Math.PI / 2, 0, 0], [1, 0.76, 1], 'bright pauldron rim')
     addMesh(pauldron, box(0.2, 0.08, 0.24), materials.darkLeather, [0.1 * side, -0.28, -0.02], [0, 0, 0.3 * side], [1, 1, 1], 'visible shoulder strap pad')
     addRivetLine(pauldron, materials, -0.13, -0.04, 0.24, 4, 0.085)
@@ -340,12 +341,12 @@ export function createRobloxR15Knight() {
   }
 
   const shoulderL = makePauldron('left worn pauldron', -1)
-  shoulderL.position.set(-0.78, 3.24, 0.02)
+  shoulderL.position.set(-0.84, 3.24, 0.02)
   shoulderL.rotation.set(0.05, 0.07, -0.28)
   registerLayer(layers, shoulderL, [-0.75, 0.32, 0.18])
 
   const shoulderR = makePauldron('right worn pauldron', 1)
-  shoulderR.position.set(0.78, 3.24, 0.02)
+  shoulderR.position.set(0.84, 3.24, 0.02)
   shoulderR.rotation.set(0.05, -0.07, 0.28)
   registerLayer(layers, shoulderR, [0.75, 0.32, 0.18])
 
@@ -423,52 +424,43 @@ export function createRobloxR15Knight() {
   beltGear.name = 'belt gear and satchels'
   addMesh(beltGear, cylinder(0.78, 0.78, 0.12, 20), materials.leather, [0, 2.22, 0], [Math.PI / 2, 0, 0], [1, 0.68, 1], 'round connected equipment belt')
   addMesh(beltGear, box(1.46, 0.08, 0.09), materials.darkLeather, [0, 2.2, 0.47], [0, 0, 0], [1, 1, 1], 'front belt overlay strap')
-  const pouchFront = makeBeltPouch('small front pouch', 0.82, materials)
-  pouchFront.position.set(0.34, 2.07, 0.57)
-  pouchFront.rotation.set(-0.08, -0.18, 0.04)
+  const pouchFront = makeBeltPouch('front utility pouch', 0.9, materials)
+  pouchFront.position.set(0.3, 2.06, 0.57)
+  pouchFront.rotation.set(-0.08, -0.14, 0.04)
 
-  const pouchSide = makeBeltPouch('large right satchel', 1.23, materials)
-  pouchSide.position.set(0.93, 1.97, 0.22)
+  const pouchSide = makeBeltPouch('large right satchel', 1.35, materials)
+  pouchSide.position.set(0.94, 1.97, 0.22)
   pouchSide.rotation.set(-0.08, -0.72, -0.12)
 
-  const rearBag = makeBeltPouch('back utility bag', 0.98, materials)
-  rearBag.position.set(0.44, 2.08, -0.55)
-  rearBag.rotation.set(0.12, 0.22, 0.02)
-
-  beltGear.add(pouchFront, pouchSide, rearBag)
+  beltGear.add(pouchFront, pouchSide)
   registerLayer(layers, beltGear, [0.62, 0.08, 0.56])
   root.add(beltGear)
 
   const sideTools = new THREE.Group()
-  sideTools.name = 'side tools and ammunition'
-  sideTools.position.set(-0.67, 2.08, -0.02)
-  addMesh(sideTools, cylinder(0.035, 0.04, 0.9, 10), materials.darkLeather, [0, -0.22, 0], [0.08, 0.02, 0.02], [1, 1, 1], 'hanging dark leather tool')
-  addMesh(sideTools, cylinder(0.032, 0.032, 0.94, 10), materials.darkSteel, [0.12, -0.25, 0.08], [0.09, -0.1, -0.08], [1, 1, 1], 'side knife blade')
-  addMesh(sideTools, box(0.08, 0.14, 0.08), materials.brass, [-0.08, 0.08, 0.06], [0, 0, 0], [1, 1, 1], 'metal belt clip')
-  addMesh(sideTools, box(0.26, 0.2, 0.14), materials.darkLeather, [0.22, 0.02, -0.08], [0, 0.2, 0.05], [1, 1, 1], 'ammo cartridge box')
+  sideTools.name = 'side tools and hanging dagger'
+  sideTools.position.set(-0.67, 2.06, -0.02)
+  addMesh(sideTools, cylinder(0.042, 0.044, 0.72, 10), materials.darkLeather, [0, -0.14, 0], [0.08, 0.02, 0.02], [1, 1, 1], 'hanging dagger sheath')
+  addMesh(sideTools, cylinder(0.03, 0.03, 0.56, 10), materials.darkSteel, [0.12, -0.12, 0.08], [0.09, -0.1, -0.08], [1, 1, 1], 'hanging dagger blade')
+  addMesh(sideTools, box(0.1, 0.16, 0.1), materials.brass, [-0.08, 0.08, 0.06], [0, 0, 0], [1, 1, 1], 'dagger belt clip')
   registerLayer(layers, sideTools, [-0.78, 0.02, 0.22])
   root.add(sideTools)
 
-  const weapon = new THREE.Group()
-  weapon.name = 'long matchlock firearm'
-  addMesh(weapon, cylinder(0.037, 0.04, 3.15, 12), materials.darkSteel, [0, 0, 0], [Math.PI / 2, 0, 0], [1, 1, 1], 'long metal barrel')
-  addMesh(weapon, cylinder(0.057, 0.057, 1, 12), materials.darkSteel, [0, 0, 0.9], [Math.PI / 2, 0, 0], [1, 1, 1], 'thick front muzzle')
-  addMesh(weapon, box(0.17, 0.2, 1.62), materials.wood, [-0.02, -0.14, -0.96], [-0.1, 0, 0], [1, 1, 1], 'long wooden gun stock')
-  addMesh(weapon, box(0.27, 0.18, 0.75), materials.wood, [-0.08, -0.23, -1.88], [-0.34, 0, 0], [1, 1, 1], 'chunky buttstock')
-  addMesh(weapon, box(0.14, 0.16, 0.22), materials.darkSteel, [0.02, -0.04, -0.08], [0, 0, 0], [1, 1, 1], 'matchlock lock plate')
-  addMesh(weapon, cylinder(0.016, 0.016, 0.46, 8), materials.brass, [0.14, -0.02, -0.08], [1.2, 0.3, 0.4], [1, 1, 1], 'curved match holder')
-  addMesh(weapon, box(0.12, 0.1, 0.1), materials.brass, [0.08, -0.01, 0.35], [0, 0, 0], [1, 1, 1], 'front sight clamp')
-  addMesh(weapon, cone(0.095, 0.38, 10), materials.edge, [0, 0, 1.74], [Math.PI / 2, 0, 0], [1, 1, 1], 'bayonet spear tip')
-  addMesh(weapon, box(0.54, 0.055, 0.085), materials.darkLeather, [0, -0.18, -0.4], [0, 0, 0], [1, 1, 1], 'weapon hand strap')
-  addRivetLine(weapon, materials, -0.11, -0.165, -0.72, 4, 0.07, 0.01)
-  weapon.position.set(-0.05, 1.8, 0.64)
-  weapon.rotation.set(1.25, 0.04, -0.73)
-  registerLayer(layers, weapon, [-0.2, 0.45, 1.55])
-  root.add(weapon)
+  const polearm = new THREE.Group()
+  polearm.name = 'front carried mercenary polearm'
+  addMesh(polearm, cylinder(0.045, 0.048, 3.55, 10), materials.wood, [0, 0, 0], [Math.PI / 2, 0, 0], [1, 1, 1], 'long wooden pole shaft')
+  addMesh(polearm, cylinder(0.06, 0.06, 0.38, 12), materials.darkSteel, [0, 0, 1.47], [Math.PI / 2, 0, 0], [1, 1, 1], 'spear socket collar')
+  addMesh(polearm, cone(0.12, 0.56, 12), materials.edge, [0, 0, 1.86], [Math.PI / 2, 0, 0], [1, 1, 1], 'chunky spear head')
+  addMesh(polearm, box(0.46, 0.06, 0.09), materials.darkLeather, [0, -0.16, -0.18], [0, 0, 0], [1, 1, 1], 'polearm grip wrap')
+  addMesh(polearm, box(0.38, 0.06, 0.09), materials.darkLeather, [0, -0.16, -1.05], [0, 0, 0], [1, 1, 1], 'lower grip wrap')
+  addRivetLine(polearm, materials, -0.09, -0.15, -0.2, 3, 0.08, 0.011)
+  polearm.position.set(-0.04, 1.9, 0.82)
+  polearm.rotation.set(1.26, 0.02, -0.48)
+  registerLayer(layers, polearm, [-0.2, 0.45, 1.55])
+  root.add(polearm)
 
   root.userData.layers = layers
   root.userData.materials = materials
-  root.userData.referenceStyle = 'weathered sallet knight, ragged cloth, pouches, long firearm, Roblox R15 block connections'
+  root.userData.referenceStyle = 'battle-worn dark fantasy mercenary commander, chunky Roblox forms, satchel, utility pouch, hanging dagger and front spear'
 
   return { root, layers, materials }
 }

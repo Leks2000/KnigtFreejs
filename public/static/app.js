@@ -132,7 +132,7 @@ function animateLayerExplosion(delta) {
 function animatePose(delta) {
   const leftArm = root.getObjectByName('left armored arm')
   const rightArm = root.getObjectByName('right armored arm')
-  const weapon = root.getObjectByName('long matchlock firearm')
+  const weapon = root.getObjectByName('front carried mercenary polearm')
   const helmet = root.getObjectByName('closed sallet helmet')
 
   const alpha = 1 - Math.pow(0.004, delta)
