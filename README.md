@@ -13,6 +13,12 @@
   - Orbit camera, zoom/pan, auto-rotation, explode view, pose switch and lighting toggle.
   - Reference image panel using the user-provided Genspark file URLs.
 
+
+Reference  
+
+<img width="512" height="512" alt="Create_a_character_concept_image_of_a_ROBLOX-style-1781626834815" src="https://github.com/user-attachments/assets/c6cc7931-411c-438d-a304-70d09bbde8e5" />
+
+
 ## What This Project Is
 This repository is an open-source browser demo / prototype for a procedural **Three.js dark-fantasy Roblox-style knight character viewer**. The project does not rely on a hand-made 3D model as the main source: the character is assembled in code from Three.js geometry, procedural materials and canvas-generated textures.
 
