@@ -1,10 +1,9 @@
 
 
-# webapp — Three.js Ragged Arquebus Knight
+# Three.js Ragged Arquebus Knight
 
 ## Project Overview
-- **Name**: webapp
-- **Goal**: интерактивная Three.js-страница с процедурным low-poly персонажем по предоставленным референсам рыцаря/латника.
+- **Name**: Arquebus Knight
 - **Main Features**:
   - Procedural 3D character assembled from Three.js primitives.
   - Roblox R15 block proportions with clean visible connections between torso, limbs, shoulders, neck and gear.
@@ -33,73 +32,15 @@ The prototype is useful as:
 - a starting point for a Roblox-inspired R15 fantasy character asset;
 - an experiment in using AI-assisted coding workflows for interactive 3D web apps.
 
-## Open Source / GitHub Setup Checklist
-Recommended GitHub repository settings and community files to add before promoting the project as open source:
-
-- **Repository description**: `Procedural Three.js Roblox-style dark fantasy knight character viewer with GLB export.`
-- **Website / homepage**: link to the deployed Cloudflare Pages or Workers URL.
-- **Topics / tags**:
-  - `threejs`
-  - `webgl`
-  - `hono`
-  - `typescript`
-  - `vite`
-  - `cloudflare-pages`
-  - `roblox`
-  - `roblox-r15`
-  - `low-poly`
-  - `procedural-generation`
-  - `3d-character`
-  - `game-art`
-  - `gltf`
-  - `glb-export`
-  - `open-source`
-  - `ai-assisted`
-  - `gpt-5-2`
-- **License**: add an OSI-approved license file, for example `MIT` for simple reuse or `Apache-2.0` if patent language is desired.
-- **Contributing guide**: add `CONTRIBUTING.md` with setup, coding style, issue workflow and PR expectations.
-- **Code of conduct**: add `CODE_OF_CONDUCT.md` if outside contributors are welcome.
-- **Security policy**: add `SECURITY.md` with responsible disclosure instructions.
-- **Issue templates**: add templates for bugs, feature requests and asset/model improvement requests.
-- **Pull request template**: include checklist items for screenshots, build verification and browser testing.
-- **Screenshots / preview GIF**: add a `docs/` or `media/` folder with a rendered screenshot, turntable GIF or short video.
-- **Roadmap**: track GLTF export polish, rigging, animation clips, UV texture workflow and production model replacement.
+## Open Source
 
 ## AI-Assisted Development Note
 This prototype was built and tested as an AI-assisted coding experiment. The project can mention that GPT-5.2 was used during experimentation/prototyping, while keeping the repository focused on the actual source code, reproducible build steps and open-source contribution workflow.
-
-## Functional Entry URIs
-- `/` — main interactive 3D character viewer.
-- `/static/app.js` — frontend Three.js scene and interaction logic.
-- `/static/style.css` — responsive UI styling.
-- `/api/character-spec` — JSON summary of character parts and controls.
 
 ## Data Architecture
 - **Data Models**: no database models; the character is procedural client-side geometry.
 - **Storage Services**: none required.
 - **Data Flow**: Hono serves the HTML shell and static assets; the browser imports Three.js from CDN and builds the scene locally.
-
-## User Guide
-1. Open `/` in a browser.
-2. Drag on the canvas to rotate the camera around the character.
-3. Use the mouse wheel/pinch to zoom.
-4. Use buttons to pause rotation, separate armor/gear layers, switch pose, and change lighting mood.
-5. Use the GLB download button to export the current procedural character as a binary glTF file.
-
-## Features Not Yet Implemented
-- Export to GLB/GLTF.
-- Full skeletal animation rig.
-- Texture painting from actual UV maps.
-- Loading a hand-made production 3D model file.
-- Browser-side export settings panel for scale, pose and texture size.
-
-## Recommended Next Steps
-- Add a GLTF export button if the model needs to be reused in Blender/Unity.
-- Add a `LICENSE` file and GitHub community health files before inviting contributors.
-- Add screenshots and a deployed demo link to the top of this README.
-- Polish the GLB export workflow for Blender/Unity/Roblox Studio handoff.
-- Replace procedural primitives with a sculpted GLB model for higher fidelity.
-- Add animation clips such as idle breathing, weapon raise, and turntable showcase.
 
 ## Deployment
 - **Platform**: Cloudflare Pages / Workers-compatible Hono app.
